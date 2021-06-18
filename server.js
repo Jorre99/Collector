@@ -10,6 +10,7 @@ const bodyParser = require('body-parser')
 //route imports
 const indexRouter = require('./routes/index')
 const authorsRouter = require('./routes/authors')
+const bookRouter = require('./routes/books')
 
 
 app.set('view engine', 'ejs')
@@ -24,11 +25,11 @@ const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', error => console.error(error))
-db.on('open', () => console.log('Connected to Mongoose'))
+db.once('open', () => console.log('Connected to Mongoose'))
 
 app.use('/', indexRouter)
 app.use('/authors', authorsRouter)
-
+app.use('/books', bookRouter)
 
 app.listen(process.env.PORT || 3000)
 
