@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const path = require('path')
 const coverImageBasePath = 'uploads/bookCovers'
 
 // add schema
@@ -26,12 +26,22 @@ const bookSchema = new mongoose.Schema({
     },
     coverImageName: {
         type: String,
-        // required: true
+        required: true
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
-        // required: true,
+        required: true,
         ref:'Author'
+    }
+})
+
+//.virtual creates a virtual 'clone' of the schema
+
+// get the image path for the books listing page(-> books.index.ejs)
+bookSchema.virtual('coverImagePath').get(function(){
+    if (this.coverImageName != null){
+        return path.join('/', coverImageBasePath, this.coverImageName)
+
     }
 })
 
