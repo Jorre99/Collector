@@ -17,8 +17,7 @@
     "express-ejs-layouts": "^2.5.1",
     "express-fileupload": "^1.2.1",
     "express-required-fields": "^1.1.2",
-    "mongoose": "^5.12.13",
-    "multer": "^1.4.2"
+    "mongoose": "^5.12.13"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",

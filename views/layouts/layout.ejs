@@ -28,7 +28,20 @@ src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-enc
 src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 
-<script src="../../public/javascripts/fileUpload.js"></script>
+<!-- Script for enabling and configuring FilePond plugins -->
+<script>
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginImageResize,
+        FilePondPluginFileEncode,
+    )
+    FilePond.setOptions({
+        stylePanelAspectRatio: 150 / 100,
+        imageResizeTargetWidth: 100,
+        imageResizeTargetHeight: 150
+    })
+    FilePond.parse(document.body)
+</script>
 </body>
 
 </html>
